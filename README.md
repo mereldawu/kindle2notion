@@ -79,7 +79,7 @@ To get a local copy up and running follow these simple steps.
 2. Export your Kindle highlights and notes to Notion!
    - On MacOS and UNIX,
    ```sh
-   kindle2notion 'your_notion_token' 'your_notion_table_id' 'your_kindle_clippings_file'
+   kindle2notion 'your_notion_token' 'your_notion_table_id' 'your_kindle_clippings_file' --user-email=youremail@yourdomain.com
    ```
    - On Windows
    ```sh
@@ -99,6 +99,7 @@ To get a local copy up and running follow these simple steps.
    - For Chrome: Open Developer Tools (*Menu > Other tools > Developer Tools*), navigate to Application tab and go to *Storage\Cookies* to find the token listed next to *tokenv2_*.
     
 4. Find your Notion table ID: it's simply the URL of the database you have copied to your workspace.  
+   - Looks something like this: https://www.notion.so/551b17a5b15640xxxxxxxxxx?v=d540ebea711yyyyyyyyyyyy
    
 5. You may modify some default parameters of the command-line with the following options of the CLI:
    - ```--enable_highlight_date```  Set to False if you don't want to see the "Date Added" information in Notion.
