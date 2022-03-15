@@ -15,10 +15,10 @@ BOLD = "**"
 
 
 def export_to_notion(
+    notion_client,
     books: Dict,
     enable_highlight_date: bool,
     enable_book_cover: bool,
-    notion_token: str,
     notion_table_id: str,
 ) -> None:
     print("Initiating transfer...\n")
@@ -33,12 +33,12 @@ def export_to_notion(
             last_date,
         ) = _prepare_aggregated_text_for_one_book(highlights, enable_highlight_date)
         message = _add_book_to_notion(
+            notion_client,
             title,
             author,
             highlight_count,
             aggregated_text_from_highlights,
             last_date,
-            notion_token,
             notion_table_id,
             enable_book_cover,
         )
@@ -73,16 +73,15 @@ def _prepare_aggregated_text_for_one_book(
 
 
 def _add_book_to_notion(
+    notion_client, 
     title: str,
     author: str,
     highlight_count: int,
     aggregated_text: str,
     last_date: str,
-    notion_token: str,
     notion_table_id: str,
     enable_book_cover: bool,
 ) -> str:
-    notion_client = NotionClient(token_v2=notion_token)
     notion_collection_view = notion_client.get_collection_view(notion_table_id)
     notion_collection_view_rows = notion_collection_view.collection.get_rows()
 
